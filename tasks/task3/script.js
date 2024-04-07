@@ -22,24 +22,22 @@ if (!userName) {
 
   localStorage.setItem("userName", name);
   localStorage.setItem("lastVisitDate", currentDate);
-} 
-else if (userName === "null"){
-  const name = prompt("Добро пожаловать! Назовите, пожалуйста, ваше имя");
-  const currentDate = new Date();
+} else {
+  if (userName === "null") {
+    const name = prompt("Добро пожаловать! Назовите, пожалуйста, ваше имя");
+    const currentDate = new Date();
 
-  localStorage.setItem("userName", name);
-  localStorage.setItem("lastVisitDate", currentDate);
-}
-else {
-  // Если пользователь уже был на сайте ранее
-  const lastVisit = new Date(lastVisitDate);
-  const formattedDate = formatDate(lastVisit);
-  const currentDate = new Date();
+    localStorage.setItem("userName", name);
+    localStorage.setItem("lastVisitDate", currentDate);
+  } else {
+    // Если пользователь уже был на сайте ранее
+    const lastVisit = new Date(lastVisitDate);
+    const formattedDate = formatDate(lastVisit);
+    const currentDate = new Date();
 
-  alert(
-    `Добрый день, ${userName}! Давно не виделись. В последний раз вы были у нас ${formattedDate}`
-  );
-  localStorage.setItem("lastVisitDate", currentDate);
+    alert(`Добрый день, ${userName}! Давно не виделись. В последний раз вы были у нас ${formattedDate}`);
+    localStorage.setItem("lastVisitDate", currentDate);
+  }
 }
 
 document.getElementById("btn_clear").addEventListener("click", function () {
